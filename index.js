@@ -1,5 +1,4 @@
 const express = require('express');
-const axios = require('axios');
 const ivr = require("./routes/ivr.js")
 
 const app = express();
