@@ -52,21 +52,21 @@ const PostIVR = async (formData) => {
 
 exports.postCall = async (newOrder) => {
     console.log("New order: ", newOrder);
-    try {
-        const state = newOrder.state;
-        const campaignName = stateLanguageMap[state];
-        if (!campaignName) {
-            console.log("");
-        }
-        const formData = {
-            campaign_name: campaignName,
-            api_key: 'KK685ccc9be2075dbf2fcea4ccff857447',
-            PhoneNumber: 9302203071,
-            action: 'START'
-        };
-        const response = await PostIVR(formData);
-        console.log('IVR initiate successfully:', response.data);
-    } catch (e) {
-        console.log('Error posting IVR:', error.response ? error.response.data : error);
-    }
+    // try {
+    //     const state = newOrder.state;
+    //     const campaignName = stateLanguageMap[state];
+    //     if (!campaignName) {
+    //         console.log("");
+    //     }
+    //     const formData = {
+    //         campaign_name: campaignName,
+    //         api_key: 'KK685ccc9be2075dbf2fcea4ccff857447',
+    //         PhoneNumber: 9302203071,
+    //         action: 'START'
+    //     };
+    //     const response = await PostIVR(formData);
+    //     console.log('IVR initiate successfully:', response.data);
+    // } catch (e) {
+    // console.log('Error posting IVR:', error.response ? error.response.data : error);
+    // }
 }
