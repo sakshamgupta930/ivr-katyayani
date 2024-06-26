@@ -1,4 +1,4 @@
-const { postCall } = require('../utils/ivrHelper')
+const { postCall } = require('../utils/ivrHelper.js')
 exports.postCallToCustomer = async (req, res) => {
     try {
         const newOrder = req.body;
