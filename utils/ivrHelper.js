@@ -74,6 +74,7 @@ exports.postCall = async (newOrder) => {
         formData.append('amount', newOrder.current_total_price);
         formData.append('api_key', 'KK685ccc9be2075dbf2fcea4ccff857447');
         formData.append('action', 'START');
+        formData.append('Name', newOrder.shipping_address.name);
 
         console.log(formData);
         const response = await PostIVR(formData);
