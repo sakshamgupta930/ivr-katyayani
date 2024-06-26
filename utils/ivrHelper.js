@@ -61,7 +61,7 @@ const getStateByZipcode = async (zipcode) => {
 }
 
 exports.postCall = async (newOrder) => {
-    // console.log("New order: ", newOrder);
+    console.log("New order: ", newOrder.shipping_address);
     try {
         const state = await getStateByZipcode(newOrder.shipping_address.zip);
         const campaignName = stateLanguageMap[state];
