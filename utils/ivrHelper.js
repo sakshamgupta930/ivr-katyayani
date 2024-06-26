@@ -34,12 +34,11 @@ const stateLanguageMap = {
 const PostIVR = async (formData) => {
     const config = {
         method: 'post',
-        url: 'https://www.zohoapis.in/crm/v2/Calls',
+        url: 'https://in-ccaas.ozonetel.com/cloudAgentRestAPI/index.php/CloudAgent/CloudAgentAPI/addCamapaignData',
+        data: formDataObject,
         headers: {
-            'Authorization': `Zoho-oauthtoken ${ZOHO_CRM_ACCESS_TOKEN}`,
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data',
         },
-        data: JSON.stringify(formData)
     };
 
     try {
