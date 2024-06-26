@@ -50,23 +50,35 @@ const PostIVR = async (formData) => {
     }
 };
 
+const getStateByZipcode = async (zipcode) => {
+    try {
+        const response = await axios.get(`https://api.postalpincode.in/pincode/${zipcode}`);
+        return response.data[0].PostOffice[0].State;
+    } catch (error) {
+        console.log('Error getting state:', error.response ? error.response.data : error);
+        return 'Madhya Pradesh'
+    }
+}
+
 exports.postCall = async (newOrder) => {
-    console.log("New order: ", newOrder);
-    // try {
-    //     const state = newOrder.state;
-    //     const campaignName = stateLanguageMap[state];
-    //     if (!campaignName) {
-    //         console.log("");
-    //     }
-    //     const formData = {
-    //         campaign_name: campaignName,
-    //         api_key: 'KK685ccc9be2075dbf2fcea4ccff857447',
-    //         PhoneNumber: 9302203071,
-    //         action: 'START'
-    //     };
-    //     const response = await PostIVR(formData);
-    //     console.log('IVR initiate successfully:', response.data);
-    // } catch (e) {
-    // console.log('Error posting IVR:', error.response ? error.response.data : error);
-    // }
+    // console.log("New order: ", newOrder);
+    try {
+        const state = await getStateByZipcode(newOrder.shipping_address.name);
+        const campaignName = stateLanguageMap[state];
+        if (!campaignName) {
+            console.log("Campaign by State not exists");
+        }
+        console.log(state);
+        console.log(campaignName);
+        // const formData = {
+        //     PhoneNumber: newOrder['shipping_address']['name'],
+        //     campaign_name: campaignName,
+        //     api_key: 'KK685ccc9be2075dbf2fcea4ccff857447',
+        //     action: 'START'
+        // };
+        // const response = await PostIVR(formData);
+        // console.log('IVR initiate successfully:', response.data);
+    } catch (e) {
+        console.log('Error posting IVR:', error.response ? error.response.data : error);
+    }
 }
