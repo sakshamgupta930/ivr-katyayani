@@ -2,7 +2,7 @@ const express = require('express');
 const ivr = require("./routes/ivr.js")
 
 const app = express();
-app.use(express.json);
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/ivr', ivr);
