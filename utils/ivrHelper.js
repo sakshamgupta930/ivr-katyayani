@@ -45,7 +45,6 @@ const PostIVR = async (formData) => {
         return await axios(config);
     } catch (error) {
         console.log('Error in POSTIVR function:', error);
-        throw error;
     }
 };
 
