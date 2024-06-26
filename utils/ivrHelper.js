@@ -69,7 +69,7 @@ exports.postCall = async (newOrder) => {
         console.log(state);
         console.log(campaignName);
         const formData = {
-            PhoneNumber: newOrder.shipping_address.name,
+            PhoneNumber: newOrder.shipping_address.phone,
             campaign_name: campaignName,
             amount: newOrder.current_total_price,
             api_key: 'KK685ccc9be2075dbf2fcea4ccff857447',
