@@ -1,6 +1,6 @@
 const express = require('express');
-const router = express.Router();
 const { postCallToCustomer } = require('../controller/ivr')
+const router = express.Router();
 
 router.post('/ivrcall', postCallToCustomer);
 
