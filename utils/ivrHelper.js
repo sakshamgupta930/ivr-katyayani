@@ -75,6 +75,7 @@ exports.postCall = async (newOrder) => {
             api_key: 'KK685ccc9be2075dbf2fcea4ccff857447',
             action: 'START'
         };
+        console.log(formData);
         const response = await PostIVR(formData);
         console.log('IVR initiate successfully:', response.data);
     } catch (e) {
