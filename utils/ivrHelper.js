@@ -35,7 +35,7 @@ const PostIVR = async (formData) => {
     const config = {
         method: 'post',
         url: 'https://in-ccaas.ozonetel.com/cloudAgentRestAPI/index.php/CloudAgent/CloudAgentAPI/addCamapaignData',
-        data: formDataObject,
+        data: formData,
         headers: {
             'Content-Type': 'multipart/form-data',
         },
@@ -68,17 +68,17 @@ exports.postCall = async (newOrder) => {
         }
         console.log(state);
         console.log(campaignName);
-        const formData = {
-            PhoneNumber: newOrder.shipping_address.phone,
-            campaign_name: campaignName,
-            amount: newOrder.current_total_price,
-            api_key: 'KK685ccc9be2075dbf2fcea4ccff857447',
-            action: 'START'
-        };
+        const formData = new FormData();
+        formData.append('PhoneNumber', newOrder.shipping_address.phone);
+        formData.append('campaign_name', campaignName);
+        formData.append('amount', newOrder.current_total_price);
+        formData.append('api_key', 'KK685ccc9be2075dbf2fcea4ccff857447');
+        formData.append('action', 'START');
+
         console.log(formData);
         const response = await PostIVR(formData);
         console.log('IVR initiate successfully:', response.data);
-    } catch (e) {
+    } catch (error) {
         console.log('Error posting IVR:', error.response ? error.response.data : error);
     }
 }
